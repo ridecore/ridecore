@@ -1,0 +1,34 @@
+
+ENTRY(_start)
+
+SECTIONS
+{
+  .startup 0x0000   : { startup.o(.text) }
+  . = 0x0200;
+
+  .init            : { KEEP (*(.init)) } = 0
+  .plt             : { *(.plt) }
+  .text            : { *(.text .stub .text.* .gnu.linkonce.t.*)
+                       KEEP (*(.text)) } = 0
+  .fini            : { KEEP (*(.fini)) } = 0
+  .rodata          : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
+  .tdata	         : { *(.tdata .tdata.* .gnu.linkonce.td.*) }
+  .tbss		    : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
+  .ctors           : { start_ctors = .;
+                       KEEP (*(SORT(.ctors.*)))
+                       KEEP (*(.ctors))
+	                  end_ctors = .; }
+  .dtors           : { start_dtors = .;
+                       KEEP (*(SORT(.dtors.*)))
+                       KEEP (*(.dtors))
+                       end_dtors = .; }
+  .data            : { *(.data .data.* .gnu.linkonce.d.*)
+                       SORT(CONSTRUCTORS) }
+  .got.plt        : { *(.got.plt) }
+  . = .;
+  _gp = ALIGN(16) + 0x7ff0;
+  .got            : { *(.got) }
+  .bss            : { *(.dynbss)
+                      *(.bss .bss.* .gnu.linkonce.b.*)
+                      *(COMMON) }
+}
