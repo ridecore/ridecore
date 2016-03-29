@@ -1,7 +1,7 @@
 # Introduction
 RIDECORE (RIsc-v Dynamic Execution CORE) is an Out-of-Order RISC-V processor written in Verilog HDL.
 This processor microarchitecture is based on "Modern Processor Design: Fundamentals of Superscalar Processors" (<https://www.waveland.com/browse.php?t=624&r=d|259>).
-We recommend users to read this book and our document in </doc> before using RIDECORE.  
+We recommend users to read this book and our document (doc/ridecore_document.pdf) before using RIDECORE.  
 RIDECORE is synthesizable on Vivado (2015.2) and can run on FPGA (50MHz on a VC707).  
 This processor is based on RISC-V ISA from UC Berkeley (<http://www.riscv.org>), 
 and some of hardware module in RIDECORE is based on vscale (<https://github.com/ucb-bar/vscale>).  
