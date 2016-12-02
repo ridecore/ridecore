@@ -6,6 +6,7 @@ module testbench();
    parameter IMEM_INTERVAL = 2000;
    parameter SIM_CYCLE = 10000000;
    parameter SIM_TIME = SIM_CYCLE * CLK_CYCLE_TIME * 2;
+   parameter init_file = "../bin/init.bin";
 
    reg [31:0] 			CLK_CYCLE;
    reg 				clk;
@@ -64,9 +65,9 @@ module testbench();
 	 rv.pipe.pipe_if.gsh.prhisttbl.pht1.mem[i] = 3;
       end
       
-      fp = $fopen("../bin/init.bin", "rb");
+      fp = $fopen(init_file, "rb");
       temp = $fread(rv.instmemory.mem, fp);
-      fp = $fopen("../bin/init.bin", "rb");
+      fp = $fopen(init_file, "rb");
       temp = $fread(rv.datamemory.mem, fp);
 
       for (i = 0 ; i < 512 ; i = i + 1) begin
